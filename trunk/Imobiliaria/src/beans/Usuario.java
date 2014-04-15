@@ -9,7 +9,7 @@ public class Usuario {
 	}
 
 	public void setUsuario(String usuario) {
-		if (!usuario.equals(""))
+		if (!usuario.equals("") && usuario != null)
 			this.usuario = usuario;
 		else
 			new Exception("Nome do usuário não preenchido");
@@ -20,7 +20,7 @@ public class Usuario {
 	}
 
 	public void setSenha(String senha) {
-		if (!senha.equals(""))
+		if (!senha.equals("") && senha != null)
 			this.senha = senha;
 		else
 			new Exception("Senha do usuário não preenchido");

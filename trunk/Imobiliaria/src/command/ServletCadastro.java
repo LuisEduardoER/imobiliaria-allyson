@@ -24,12 +24,12 @@ public class ServletCadastro extends HttpServlet {
 		String aluga = request.getParameter("locacao");
 		
 		Imovel i = new Imovel();
-		if(venda!=null){
-			i.setVender(true);
+		/*if(venda!=null){
+			i.setPretende(venda);
 		}
 		if(aluga!=null){
-			i.setAlugar(true);
-		}
+			i.setPretende(aluga);
+		}*/
 		
 		i.setTipo(request.getParameter("tipo"));
 		i.setEstado(request.getParameter("estado"));

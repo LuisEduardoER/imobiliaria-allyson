@@ -1,8 +1,7 @@
 package beans;
 
 public class Imovel {
-	private boolean alugar;
-	private boolean vender;
+	private String[] pretende; 
 	private String tipo;
 	private String estado;
 	private String cidade;
@@ -10,28 +9,26 @@ public class Imovel {
 	private int valvenda;
 	private int vallocacao;
 
+	
+	
+	public String[] getPretende() {
+		return pretende;
+	}
+
+	public void setPretende(String[] pretende) {
+		if(!pretende.equals("")&& pretende != null)
+		this.pretende = pretende;
+		else new Exception(" não preenchido");
+	}
+
 	public String getCidade() {
 		return cidade;
 	}
 
 	public void setCidade(String cidade) {
+		if(!cidade.equals("") && cidade !=null)
 		this.cidade = cidade;
-	}
-
-	public boolean isAlugar() {
-		return alugar;
-	}
-
-	public void setAlugar(boolean alugar) {
-		this.alugar = alugar;
-	}
-
-	public boolean isVender() {
-		return vender;
-	}
-
-	public void setVender(boolean vender) {
-		this.vender = vender;
+		else new Exception("cidade não preenchido");
 	}
 
 	public String getTipo() {
@@ -39,7 +36,9 @@ public class Imovel {
 	}
 
 	public void setTipo(String tipo) {
+		if(!tipo.equals("") && tipo !=null)
 		this.tipo = tipo;
+		else new Exception("tipo não preenchido");
 	}
 
 	public String getEstado() {
@@ -47,7 +46,9 @@ public class Imovel {
 	}
 
 	public void setEstado(String estado) {
+		if(!estado.equals("") && estado != null)
 		this.estado = estado;
+		else new Exception("estado não preenchido");
 	}
 
 	public int getValvenda() {
@@ -56,6 +57,7 @@ public class Imovel {
 
 	public void setValvenda(int valvenda) {
 		this.valvenda = valvenda;
+		
 	}
 
 	public int getVallocacao() {
