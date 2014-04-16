@@ -37,7 +37,7 @@ public class ServletLogin extends HttpServlet {
 			
 			request.getRequestDispatcher("inicio.html").forward(request, response);
 			
-		}else{response.sendRedirect("index.html");}
+		}
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

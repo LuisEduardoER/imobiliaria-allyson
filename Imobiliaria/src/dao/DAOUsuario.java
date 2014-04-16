@@ -3,7 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
+
 
 import jdbc.Conexao;
 import beans.Usuario;
@@ -11,16 +11,17 @@ import beans.Usuario;
 
 public class DAOUsuario {
 
-	Connection conn = new Conexao().getConnection();
+	
 	
 	public void cadastrar(Usuario u){
+		Connection con = new Conexao().getConnection();
 		String sql = "insert into usuario ( usuario, senha) values (?,?)";
 		 try {
-			    PreparedStatement pstmt = conn.prepareStatement(sql);
+			    PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, u.getUsuario());
 				pstmt.setString(2, u.getSenha());
 				
-				pstmt.executeUpdate();
+				pstmt.execute();
 				pstmt.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
