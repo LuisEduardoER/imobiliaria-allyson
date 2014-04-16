@@ -2,6 +2,7 @@ package command;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,11 +21,10 @@ public class ServletCadastro extends HttpServlet {
     }
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		Usuario u = new Usuario();
 		u.setSenha(request.getParameter("senha"));
 		u.setUsuario(request.getParameter("usuario"));
@@ -33,6 +33,7 @@ public class ServletCadastro extends HttpServlet {
 		usu.cadastrar(u);
 		
 		request.getRequestDispatcher("inicio.html").forward(request, response);
+	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
