@@ -34,9 +34,9 @@ public class ServletCadastro extends HttpServlet {
 			sessao.setAttribute("usuario", u);
 			DAOUsuario usu = new DAOUsuario();
 			usu.cadastrar(u);
-			request.getRequestDispatcher("cadastrousu.jsp").forward(request, response);
+			request.getRequestDispatcher("inicio.html").forward(request, response);
 			
-		}else{request.getRequestDispatcher("inicio.html").forward(request, response);}
+		}else{request.getRequestDispatcher("cadastrousu.jsp").forward(request, response);}
 	
 	}
 
