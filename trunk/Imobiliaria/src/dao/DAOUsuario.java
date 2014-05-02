@@ -36,9 +36,9 @@ public class DAOUsuario {
 			}
 		 
 	}
-	public List<Usuario> buscarTodos(){
+	public ArrayList<Usuario> buscarTodos(){
 		
-		List<Usuario> lista =  new ArrayList<Usuario>();
+		ArrayList<Usuario> lista =  new ArrayList<Usuario>();
 		String sql = "select * from usuario";
 				
 		try {
@@ -62,11 +62,7 @@ public class DAOUsuario {
 	
 	public void alterar(Usuario usuario) { 
 
-		
-
 		String sql = "update usuario set usuario=? , senha=? where idusuario=?";
-
-		
 
 		try {
 			PreparedStatement pstm = con.prepareStatement(sql);

@@ -1,11 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="beans.Usuario" %>
+<%@ page import="beans.*" %>
 <%@ page import="java.util.*" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 
 <% 
-	List<Usuario> lista = (List<Usuario>) session.getAttribute("lista");
+	ArrayList<Usuario> lista = (ArrayList<Usuario>) session.getAttribute("lista");
 %>
 
 <html>
@@ -35,7 +36,7 @@
   <div class="left_box">
         <div class="top_left_box"> </div>
         <div class="center_left_box">
-          <div class="box_title">Pesquisar por Usuario</div>
+          <div class="box_title">Pesquisar Usuarios</div>
           <div class="form">
           
           <form action="ServletListaUsuario" method="get">
@@ -45,17 +46,21 @@
   	       </form>
 		    <table border="1">
 			<tr>
+				<th> id </th>
 				<th> usuario </th>
 				<th> Senha </th>
 			</tr>
 			<%
-			for (Usuario u: lista){
+			//for (Usuario u: lista){
+			for(int i=0; i < lista.size(); i++){
+				Usuario u  = lista.get(i);
 			%>
 			
 			<tr>
 				<td> <%= u.getId() %> </td>
 				<td> <%= u.getUsuario() %> </td>
 				<td> <%= u.getSenha() %> </td>
+				<td>  <a href="#<%= u.getId() %>"> Excluir </a> /  <a href="#<%= u.getId() %>">Alterar</a> </td>
 			</tr>
 		
 			<%

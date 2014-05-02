@@ -1,7 +1,7 @@
 package command;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,7 +29,7 @@ public class ServletListaUsuario extends HttpServlet {
 		DAOUsuario usu = new DAOUsuario();
 		
 		
-		List<Usuario> lista = usu.buscarTodos();
+		ArrayList<Usuario> lista = usu.buscarTodos();
 		HttpSession session = request.getSession();
 		session.setAttribute("lista", lista);
 		
