@@ -32,3 +32,26 @@ e.style.display = 'block';
 function cadastrar(){
 	alert('Cadastro Concluído');
 }
+
+
+function validaCadastro(){
+	
+	var form = document.forms[0];
+	usuario =  document.getElementById('usuario');
+	senha =  document.getElementById('senha');
+	
+	
+	if(usuario.value==''){
+		alert('usuario é obrigatório!');
+		usuario.focus();
+		return false;
+	}
+	if(senha.value==''){
+		alert('Senha é obrigatório!');
+		senha.focus();
+		return false;
+	}else{
+		form.submit();
+	}
+	
+}
