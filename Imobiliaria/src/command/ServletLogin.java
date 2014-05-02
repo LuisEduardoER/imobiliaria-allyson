@@ -29,7 +29,7 @@ public class ServletLogin extends HttpServlet {
 		u.setUsuario(request.getParameter("usuario"));
 		u.setSenha(request.getParameter("senha"));
 		
-		if(u!=null){
+		if(u.getUsuario() !=null){
 			
 			HttpSession sessao = request.getSession();
 			
@@ -37,7 +37,7 @@ public class ServletLogin extends HttpServlet {
 			
 			request.getRequestDispatcher("inicio.html").forward(request, response);
 			
-		}
+		}else{request.getRequestDispatcher("index.html").forward(request, response);}
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
