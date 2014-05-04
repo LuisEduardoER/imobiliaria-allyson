@@ -22,10 +22,9 @@
     <div class="banner_adds"></div>
     <div class="menu">
       <ul>
-        <li><a href="inicio.html">Inicio</a></li>
-        <li><a href="cadastrousu.jsp">Cadastrar Usuário</a></li>
+        <li><a href="inicio.jsp">Inicio</a></li>
         <li><a href="#">Cadastrar Imóvel</a></li>
-        <li><a href="pesquisausu.jsp">Pesquisar Usuario</a></li>
+        <li><a href="#">Pesquisar Imóvel</a></li>
       </ul>
     </div>
   </div>

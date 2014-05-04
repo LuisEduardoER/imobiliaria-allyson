@@ -2,6 +2,7 @@ package command;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.Usuario;
-
+import dao.DAOUsuario;
 
 @WebServlet("/ServletLogin")
 public class ServletLogin extends HttpServlet {
@@ -29,21 +30,21 @@ public class ServletLogin extends HttpServlet {
 		u.setUsuario(request.getParameter("usuario"));
 		u.setSenha(request.getParameter("senha"));
 		
-		if(u.getUsuario() !=null){
+		
+			DAOUsuario usu = new DAOUsuario();
 			
-			HttpSession sessao = request.getSession();
+			Usuario usuAutenticado = usu.autenticar(u);
 			
-			sessao.setAttribute("usuario", u);
+				if(usuAutenticado != null){
+				HttpSession sessao = request.getSession();
 			
-			request.getRequestDispatcher("inicio.html").forward(request, response);
+				sessao.setAttribute("usuAutenticado",usuAutenticado );
 			
-		}else{request.getRequestDispatcher("index.html").forward(request, response);}
-	}
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+				request.getRequestDispatcher("inicio.jsp").forward(request, response);
+				
+				}else{request.getRequestDispatcher("errologin.html").forward(request, response);}
+			
+			
 	}
 
 }

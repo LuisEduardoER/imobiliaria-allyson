@@ -1,5 +1,7 @@
 package teste;
 
+import java.util.ArrayList;
+
 import beans.Usuario;
 import dao.DAOUsuario;
 
@@ -22,8 +24,17 @@ public class TestaUsuarioDAO {
 		//instancia do objeto que faz o CRUD
 		DAOUsuario usuarioDAO=  new DAOUsuario();
 		
-		usuarioDAO.cadastrar(usuario1);
-		usuarioDAO.cadastrar(usuario2);
+		//usuarioDAO.cadastrar(usuario1);
+		//ArrayList<Usuario> lista = usuarioDAO.buscarTodos();
+		 
+		//for (Usuario l: lista){
+		//System.out.println(l.getUsuario());	
+		//}
+		Usuario x = usuarioDAO.autenticar(usuario1);
+		if(x != null){
+		System.out.println("ok");
+		}else{System.out.println("tofu");}
+		}
 	}
 
-}
+

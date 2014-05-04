@@ -48,7 +48,7 @@ public class DAOUsuario {
 					
 					while(res.next()){
 						Usuario usuario =  new Usuario();
-						usuario.setId(res.getInt("id") );
+						usuario.setId(res.getInt("idusuario") );
 						usuario.setUsuario(res.getString("usuario"));
 						usuario.setSenha(res.getString("senha"));
 						lista.add(usuario);
@@ -82,7 +82,7 @@ public class DAOUsuario {
 
 		
 
-		String sql = "delete from usuario where id=?";
+		String sql = "delete from usuario where idusuario=?";
 
 		
 
@@ -97,5 +97,32 @@ public class DAOUsuario {
 			e.printStackTrace();
 		}
 	}
+	public Usuario autenticar(Usuario usuario){
+				String sql = "select * from usuario where usuario=? and senha=?";
+				
+				try {
+					PreparedStatement pstm = con.prepareStatement(sql);
+					pstm.setString(1, usuario.getUsuario());
+					pstm.setString(2, usuario.getSenha());
+					
+					ResultSet res = pstm.executeQuery();
+					
+					
+					if(res.next()){
+						
+						Usuario usu =  new Usuario();
+						usu.setId(res.getInt("idusuario") );
+						usu.setUsuario(res.getString("usuario"));
+						usu.setSenha(res.getString("senha"));
+						return usu;
+					}
+					
+					pstm.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				return null;
+	}
+
 	
 }

@@ -23,8 +23,8 @@ public class ServletCadastro extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Usuario u = new Usuario();
-		u.setSenha(request.getParameter("senha"));
-		u.setUsuario(request.getParameter("usuario"));
+		u.setSenha(request.getParameter("cadsenha"));
+		u.setUsuario(request.getParameter("cadusuario"));
 		
 		
 		if(u.getUsuario() !=null){
@@ -34,9 +34,9 @@ public class ServletCadastro extends HttpServlet {
 			sessao.setAttribute("usuario", u);
 			DAOUsuario usu = new DAOUsuario();
 			usu.cadastrar(u);
-			request.getRequestDispatcher("inicio.html").forward(request, response);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 			
-		}else{request.getRequestDispatcher("cadastrousu.jsp").forward(request, response);}
+		}else{request.getRequestDispatcher("errologin.html").forward(request, response);}
 	
 	}
 
