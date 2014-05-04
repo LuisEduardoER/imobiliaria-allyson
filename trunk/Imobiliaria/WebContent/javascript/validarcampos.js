@@ -37,20 +37,21 @@ function cadastrar(){
 function validaCadastro(){
 	
 	var form = document.forms[0];
-	usuario =  document.getElementById('usuario');
-	senha =  document.getElementById('senha');
+	cadusuario =  document.getElementById('cadusuario');
+	cadsenha =  document.getElementById('cadsenha');
 	
 	
-	if(usuario.value==''){
+	if(cadusuario.value==''){
 		alert('usuario é obrigatório!');
 		usuario.focus();
 		return false;
 	}
-	if(senha.value==''){
+	if(cadsenha.value==''){
 		alert('Senha é obrigatório!');
 		senha.focus();
 		return false;
 	}else{
+		alert('Usuário Cadastrado!');
 		form.submit();
 	}
 	

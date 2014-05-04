@@ -1,21 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="beans.Usuario" %>
+<%@ page import="beans.*" %>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%
-	Usuario u =  (Usuario) request.getAttribute("u");
-%>
+
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/teste.css">
 <script src="javascript/validarcampos.js" type="text/javascript"></script>
 </head>
 <body>
-
-
-	
 <div id="main_container">
   <div id="header">
     <div class="banner_adds"></div>
@@ -35,27 +31,31 @@
   <div class="left_box">
         <div class="top_left_box"> </div>
         <div class="center_left_box">
-          <div class="box_title">Cadastro</div>
+          <div class="box_title">Login</div>
           <div class="form">
           
-          <form action="ServletCadastro"  method="get">
-            <div class="form_row">
+          <form action="ServletLogin" method="post">
+			 <div class="form_row">
               <label class="left">Usuário: </label>
-              <input type="text" name="cadusuario" id="cadusuario"  />
+              <input type="text" name="usuario" id="usuario"  />
             </div>
              <div class="form_row">
               <label class="left">Senha: </label>
-              <input type="password" name="cadsenha" id="cadsenha"/>
+              <input type="password" name="senha" id="senha"/>
             </div>
-            <div style="float:right; padding:10px 25px 0 0;">
-              <input type="button" value="Enviar"  onclick="validaCadastro();"></div>
-            </form></div>
+			<br>		
+			<input type="button" value="Login" onclick="verificarcampos();">
+		</form><a href="cadastrousu.jsp"> cadastre-se</a></div>
         </div>
         <div class="bottom_left_box"> </div>
       </div>
      
     </div>
-
+	<div class="column3">
+      
+      
+      
+    </div>
 
 </div>
 </body>
