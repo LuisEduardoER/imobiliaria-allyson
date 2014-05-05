@@ -6,7 +6,7 @@
 
 
 <% 
-	ArrayList<Usuario> lista = (ArrayList<Usuario>) session.getAttribute("lista");
+	ArrayList<Imovel> lista = (ArrayList<Imovel>) session.getAttribute("lista");
 %>
 
 <html>
@@ -23,8 +23,8 @@
     <div class="menu">
       <ul>
         <li><a href="inicio.jsp">Inicio</a></li>
-        <li><a href="#">Cadastrar Imóvel</a></li>
-        <li><a href="#">Pesquisar Imóvel</a></li>
+        <li><a href="cadastroimovel.jsp">Cadastrar Imóvel</a></li>
+        <li><a href="ServletListaImovel">Pesquisar Imóvel</a></li>
       </ul>
     </div>
   </div>
@@ -35,7 +35,7 @@
   <div class="left_box">
         <div class="top_left_box"> </div>
         <div class="center_left_box">
-          <div class="box_title">Pesquisar Usuarios</div>
+          <div class="box_title">Pesquisar Imovel</div>
           <div class="form">
           
           <form action="ServletListaUsuario" method="get">
@@ -45,21 +45,25 @@
   	       </form>
 		    <table border="1">
 			<tr>
-				<th> id </th>
-				<th> usuario </th>
-				<th> Senha </th>
+				<th> IdImovel </th>
+				<th> tipo </th>
+				<th> estado </th>
+				<th> cidade </th>
+				<th> valor venda </th>
 			</tr>
 			<%
 			//for (Usuario u: lista){
 			for(int i=0; i < lista.size(); i++){
-				Usuario u  = lista.get(i);
+				Imovel u  = lista.get(i);
 			%>
-			
+			 
 			<tr>
-				<td> <%= u.getId() %> </td>
-				<td> <%= u.getUsuario() %> </td>
-				<td> <%= u.getSenha() %> </td>
-				<td>  <a href="#<%= u.getId() %>"> Excluir </a> /  <a href="#<%= u.getId() %>">Alterar</a> </td>
+				<td> <%= u.getIdimovel() %> </td>
+				<td> <%= u.getTipo() %> </td>
+				<td> <%= u.getEstado() %> </td>
+				<td> <%= u.getCidade() %> </td>
+				<td> <%= u.getValvenda() %> </td>
+				<td>  <a href="<%= u.getIdimovel() %>"> Excluir </a> /  <a href="#<%= u.getIdimovel() %>">Alterar</a> </td>
 			</tr>
 		
 			<%
@@ -78,7 +82,7 @@
       <div class="left_box">
         <div class="top_left_box"> </div>
         <div class="center_left_box">
-          <div class="box_title">Pesquisar por nome</div>
+          <div class="box_title">Pesquisar por nome(fazer)</div>
           <div class="form">
           
          

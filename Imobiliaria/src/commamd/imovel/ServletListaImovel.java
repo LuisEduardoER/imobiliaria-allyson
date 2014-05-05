@@ -1,4 +1,4 @@
-package command;
+package commamd.imovel;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,30 +10,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.Usuario;
-import dao.DAOUsuario;
+import beans.Imovel;
+import dao.ImovelDAO;
 
 
-@WebServlet("/ServletListaUsuario")
-public class ServletListaUsuario extends HttpServlet {
+@WebServlet("/ServletListaImovel")
+public class ServletListaImovel extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
     
-    public ServletListaUsuario() {
+    public ServletListaImovel() {
         super();
-        
+       
     }
 
-	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ImovelDAO id = new ImovelDAO();
 		
-		DAOUsuario usu = new DAOUsuario();
-		
-		
-		ArrayList<Usuario> lista = usu.buscarTodos();
+		ArrayList<Imovel> lista = id.buscarTodos();
 		HttpSession session = request.getSession();
 		session.setAttribute("lista", lista);
 		
-		request.getRequestDispatcher("pesquisausu.jsp").forward(request, response);
+		request.getRequestDispatcher("pesquisaimovel.jsp").forward(request, response);
+		
 	}
+
+	
 
 }

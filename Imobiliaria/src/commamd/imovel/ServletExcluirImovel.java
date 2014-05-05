@@ -9,16 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.*;
+import beans.Imovel;
+import beans.Usuario;
+import dao.ImovelDAO;
 
-@WebServlet("/ServletCadastraImovel")
-public class ServletCadastraImovel extends HttpServlet {
+
+@WebServlet("/ServletExcluirImovel")
+public class ServletExcluirImovel extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
    
-    public ServletCadastraImovel() {
+    public ServletExcluirImovel() {
         super();
-        
+       
     }
 
 	
@@ -27,25 +30,15 @@ public class ServletCadastraImovel extends HttpServlet {
 		Usuario usuario = (Usuario)session.getAttribute("usuAutenticado");
 		
 		if(usuario != null){
-		Imovel i = new Imovel();
-		i.setCidade(request.getParameter("cidade"));
-		i.setTipo(request.getParameter("tipo"));
-		i.setEstado(request.getParameter("estado"));
-		
-		int loca = Integer.parseInt(request.getParameter("vallocacao"));
-		int venda = Integer.parseInt(request.getParameter("valvenda"));
-		
-		i.setVallocacao(loca);
-		i.setValvenda(venda);
-		String[] pretende = request.getParameterValues("prentede");
-		i.setPretende(pretende);
-		
-		
-		
+			Imovel i = new Imovel();
+			int id = Integer.parseInt(request.getParameter("id"));
+			
+			i.setIdimovel(id);
+			ImovelDAO idao = new ImovelDAO();
+			
+			idao.excluir(i);
 		}
-		
 	}
 
 	
-
 }

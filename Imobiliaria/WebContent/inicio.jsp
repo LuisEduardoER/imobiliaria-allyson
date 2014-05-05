@@ -18,8 +18,8 @@
     <div class="menu">
       <ul>
         <li><a href="inicio.jsp">Inicio</a></li>
-        <li><a href="#">Cadastrar Imóvel</a></li>
-        <li><a href="#">Pesquisar Imóvel</a></li>
+        <li><a href="cadastroimovel.jsp">Cadastrar Imóvel</a></li>
+        <li><a href="ServletListaImovel">Pesquisar Imóvel</a></li>
       </ul>
     </div>
   </div>
