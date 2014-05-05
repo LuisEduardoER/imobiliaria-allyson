@@ -8,9 +8,17 @@ public class Imovel {
 
 	private int valvenda;
 	private int vallocacao;
+	private int idimovel;
+	
+	
+	public int getIdimovel() {
+		return idimovel;
+	}
 
-	
-	
+	public void setIdimovel(int idimovel) {
+		this.idimovel = idimovel;
+	}
+
 	public String[] getPretende() {
 		return pretende;
 	}
