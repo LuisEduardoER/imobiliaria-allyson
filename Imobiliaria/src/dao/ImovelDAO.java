@@ -20,21 +20,20 @@ public class ImovelDAO {
 	
 public void cadastrar(Imovel i){
 		
-		String sql = "insert into imovel(pretende,tipo,estado,cidade,valvenda,vallocacao) values (?,?,?,?,?,?,?)";
+		String sql = "insert into imovel(idiusuario,pretendelocar,pretendevender,tipo,estado,cidade,valvenda,vallocacao) values (?,?,?,?,?,?,?,?)";
 		 try {
 			    PreparedStatement pstmt = con.prepareStatement(sql);
-			    ArrayList pretende =  new ArrayList(); 
 			    
-			    //String[] array = i.getPretende();
-			    //for(String s:array.){
-			    	
-			    //}
-				//pstmt.setArray(1, array);
-			    pstmt.setString(2, i.getTipo());
-				pstmt.setString(3, i.getEstado());
-				pstmt.setString(4, i.getCidade());
-			    pstmt.setInt(5, i.getValvenda());
-			    pstmt.setInt(6, i.getVallocacao());
+			    
+			    
+				pstmt.setInt(1, i.getIdusuario());
+			    pstmt.setInt(2, i.getPretendealugar());
+				pstmt.setInt(3, i.getPretendevender());
+				pstmt.setString(4, i.getTipo());
+				pstmt.setString(5, i.getEstado());
+				pstmt.setString(6, i.getCidade());
+			    pstmt.setInt(7, i.getValvenda());
+			    pstmt.setInt(8, i.getVallocacao());
 			    
 			    
 				pstmt.execute();
@@ -57,12 +56,12 @@ public ArrayList<Imovel> buscarTodos(){
 				while(res.next()){
 					Imovel i =  new Imovel();
 					i.setIdimovel(res.getInt("idimovel"));
-					//i.setPretende(res.getString("pretende"));
+					//i.setIdusuario(res.getInt("idiusuario"));
 					i.setCidade(res.getString("cidade"));
 					i.setEstado(res.getString("estado"));
 					i.setTipo(res.getString("tipo"));
-					i.setVallocacao(res.getInt("vallocacao"));
-					i.setValvenda(res.getInt("valvenda"));
+					//i.setVallocacao(res.getInt("vallocacao"));
+					//i.setValvenda(res.getInt("valvenda"));
 					lista.add(i);
 				}
 				pstm.close();
@@ -74,7 +73,7 @@ public ArrayList<Imovel> buscarTodos(){
 
 public void alterar(Imovel i) { 
 
-	String sql = "update imovel set pretende=? , cidade=? , estado=?,tipo=?,vallocacao=?,valvenda=? where idimovel=?";
+	String sql = "update imovel set pretende=? , tipo=?,vallocacao=?,valvenda=? where idimovel=?";
 
 	try {
 		PreparedStatement pstm = con.prepareStatement(sql);

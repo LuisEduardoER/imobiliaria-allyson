@@ -17,7 +17,7 @@
     <div class="banner_adds"></div>
     <div class="menu">
       <ul>
-        <li></li>
+        <li><a href="cadastrousu.jsp"> cadastre-se</a></li>
         <li></li>
         <li></li>
         <li></li>

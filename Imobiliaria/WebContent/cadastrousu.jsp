@@ -21,7 +21,7 @@
     <div class="banner_adds"></div>
     <div class="menu">
       <ul>
-        <li></li>
+        <li><a href="index.jsp">Cadastre-se</a></li>
         <li></li>
         <li></li>
         <li></li>

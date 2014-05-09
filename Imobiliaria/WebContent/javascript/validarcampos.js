@@ -56,3 +56,37 @@ function validaCadastro(){
 	}
 	
 }
+
+function validaImovel(){
+	var form = document.forms[0];
+	cidade = document.getElementById('cidade');
+	estado = document.getElementById('estado');
+	pretende = document.getElementById('pretende');
+	valvenda = document.getElementById('valvenda');
+	vallocacao = document.getElementById('vallocacao');
+	
+	if(cidade.value==''){
+		alert('campo vazio!');
+		cidade.focus();
+		return false;
+	}if(estado.value==''){
+		alert('campo vazio!');
+		estado.focus();
+		return false;
+	}if(pretende.value==''){
+		alert('campo pretende vazio!');
+		return false;
+	}if(valvenda.value==''){
+		alert('campo vazio!');
+		valvenda.focus();
+		return false;
+	}if(vallocacao.value==''){
+		alert('campo vazio!');
+		vallocacao.focus();
+		return false;
+	}else{
+		alert('Imóvel Cadastrado!');
+		form.submit();
+	}
+	
+}

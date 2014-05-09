@@ -1,7 +1,7 @@
 package beans;
 
 public class Imovel {
-	private String[] pretende; 
+	private String[] pretende;
 	private String tipo;
 	private String estado;
 	private String cidade;
@@ -9,8 +9,45 @@ public class Imovel {
 	private int valvenda;
 	private int vallocacao;
 	private int idimovel;
+	private int idusuario;
+	private int pretendevender;
+	private int pretendealugar;
 	
 	
+	
+	
+	public String[] getPretende() {
+		return pretende;
+	}
+
+	public void setPretende(String[] pretende) {
+		this.pretende = pretende;
+	}
+
+	public int getPretendevender() {
+		return pretendevender;
+	}
+
+	public void setPretendevender(int pretendevender) {
+		this.pretendevender = pretendevender;
+	}
+
+	public int getPretendealugar() {
+		return pretendealugar;
+	}
+
+	public void setPretendealugar(int pretendealugar) {
+		this.pretendealugar = pretendealugar;
+	}
+
+	public int getIdusuario() {
+		return idusuario;
+	}
+
+	public void setIdusuario(int idusuario) {
+		this.idusuario = idusuario;
+	}
+
 	public int getIdimovel() {
 		return idimovel;
 	}
@@ -19,15 +56,7 @@ public class Imovel {
 		this.idimovel = idimovel;
 	}
 
-	public String[] getPretende() {
-		return pretende;
-	}
-
-	public void setPretende(String[] pretende) {
-		if(!pretende.equals("")&& pretende != null)
-		this.pretende = pretende;
-		else new Exception(" não preenchido");
-	}
+	
 
 	public String getCidade() {
 		return cidade;

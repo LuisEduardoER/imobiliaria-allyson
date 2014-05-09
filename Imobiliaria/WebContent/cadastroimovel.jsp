@@ -23,14 +23,34 @@
     </div>
   </div>
    <div class="column1">
-  
+  <div class="left_box">
+        <div class="top_left_box"> </div>
+        <div class="center_left_box">
+          <div class="box_title">Bem vindo</div>
+          <div class="form">
+            <div class="box_title">
+              
+ <% 
+	Usuario usuAutenticado =  (Usuario)session.getAttribute("usuAutenticado");
+	out.print(usuAutenticado.getUsuario());
+%></div>
+            
+             
+            <div style="float:right; padding:10px 25px 0 0;">
+            
+            </div>
+          </div>
+        </div>
+        <div class="bottom_left_box"> </div>
+      </div>
 </div>
  <div class="column2">
  <div class="left_box">
         <div class="top_left_box"> </div>
         <div class="center_left_box">
-          <div class="box_title">Pesquisar Imóvel</div>
+          <div class="box_title">Cadastrar Imóvel</div>
           <div class="form">
+          <form action="ServletCadastraImovel" method="get">
             <div class="form_row">
               <label class="left">Cidade: </label>
               <input type="text" class="form_input" name="cidade" id="cidade" />
@@ -40,12 +60,12 @@
               <input type="text" class="form_input" name="estado" id="estado"/>
             </div>
             <div class="form_row">
-              <label class="left">Preço: </label>
-              <input type="text" class="form_input" value="Valor da venda" name="valvenda" id="valvenda" />
+              <label class="left">Preço da venda: </label>
+              <input type="text" class="form_input"  name="valvenda" id="valvenda" />
             </div>
             <div class="form_row">
-              <label class="left">Preço: </label>
-              <input type="text" class="form_input" value="Valor da locacao"  name="vallocacao" id="vallocacao"/>
+              <label class="left">Preço da locação: </label>
+              <input type="text" class="form_input"   name="vallocacao" id="vallocacao"/>
             </div>
             <div class="form_row">
               <label class="left">Tipo: </label>
@@ -58,17 +78,15 @@
             </div>
             <div class="form_row">
               <label class="left_long">Pretende:</label>
-            </div>
-            <div class="form_row">
-              <input type="checkbox" name="pretende" id="pretende" />
-              Comprar</div>
-            <div class="form_row">
-              <input type="checkbox" name="pretende" id="pretende" />
+              <input type="checkbox" name="pretende" id="pretende" value="vender"/>
+              Vender
+              <input type="checkbox" name="pretende" id="pretende" value="alugar"/>
               Alugar</div>
-           
+         
             <div style="float:right; padding:10px 25px 0 0;">
-              <input type="button" value="Cadastrar" />
+              <input type="button" value="Cadastrar" onclick="validaImovel();"/>
             </div>
+            </form>
           </div>
         </div>
         <div class="bottom_left_box"> </div>
