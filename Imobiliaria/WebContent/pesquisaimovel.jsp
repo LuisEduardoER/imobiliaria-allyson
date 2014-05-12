@@ -4,7 +4,9 @@
 <%@ page import="java.util.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-
+  <% 
+	ArrayList<Imovel> lista = (ArrayList<Imovel>) session.getAttribute("lista");
+	%>
 
 
 <html>
@@ -38,9 +40,7 @@
           
           <form action="ServletListaImovel" method="get">
   	       
-              <% 
-	ArrayList<Imovel> lista = (ArrayList<Imovel>) session.getAttribute("lista");
-	%>
+            
             
   	       
 		    <table border="1">
@@ -52,7 +52,7 @@
 				<th> valor venda </th>
 			</tr>
 			<%
-			//for (Usuario u: lista){
+			
 			for(int i=0; i < lista.size(); i++){
 				Imovel u  = lista.get(i);
 			%>
@@ -63,7 +63,7 @@
 				<td> <%= u.getEstado() %> </td>
 				<td> <%= u.getCidade() %> </td>
 				<td> <%= u.getValvenda() %> </td>
-				<td>  <a href="ServletExcluirImovel?id=<%= u.getIdimovel() %>"> Excluir </a> /  <a href="ServletAlterarImovel?id=<%= u.getIdimovel() %>">Alterar</a> </td>
+				<td>  <a href="ServletExluirImovel?id=<%= u.getIdimovel() %>"> Excluir </a> /  <a href="ServletAlterarImovel?id=<%= u.getIdimovel() %>">Alterar</a> </td>
 			</tr>
 		
 			<%
