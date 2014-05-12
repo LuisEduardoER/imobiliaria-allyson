@@ -14,14 +14,13 @@ import beans.Usuario;
 import dao.ImovelDAO;
 
 
-@WebServlet("/ServletExcluirImovel")
-public class ServletExcluirImovel extends HttpServlet {
+@WebServlet("/ServletAlterarImovel")
+public class ServletAlterarImovel extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-   
-    public ServletExcluirImovel() {
+ 
+    public ServletAlterarImovel() {
         super();
-       
     }
 
 	
@@ -29,20 +28,24 @@ public class ServletExcluirImovel extends HttpServlet {
 		HttpSession session = request.getSession();
 		Usuario usuario = (Usuario)session.getAttribute("usuAutenticado");
 		
+		int x = usuario.getId();
+		String id = request.getParameter("id");
+		Imovel i = new Imovel();
+		ImovelDAO idao = new ImovelDAO();
 		
-		if(usuario != null){
-			Imovel i = new Imovel();
-			int id = Integer.parseInt(request.getParameter("id"));
-			ImovelDAO idao = new ImovelDAO();
-			 i = idao.buscarPorId(id);
-			int x = usuario.getId();
-			if(i.getIdusuario() == x){
-			idao.excluir(i);
+		if(id!=null){
+			
+						
+			 i = idao.buscarPorId(Integer.parseInt(id));
+			if(i.getIdusuario() == x){ 
+			request.setAttribute("i", i);
+			
+			//encaminhar para o frmcadusuario
 			request.getRequestDispatcher("pesquisaimovel.jsp").forward(request, response);
 			
 			}else request.getRequestDispatcher("naoexlui.html").forward(request, response);
+		
 		}request.getRequestDispatcher("naoexlui.html").forward(request, response);
 	}
 
-	
 }

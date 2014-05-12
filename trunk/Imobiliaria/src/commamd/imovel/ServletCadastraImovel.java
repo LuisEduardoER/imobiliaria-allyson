@@ -44,24 +44,27 @@ public class ServletCadastraImovel extends HttpServlet {
 		i.setVallocacao(loca);
 		i.setValvenda(venda);
 		
-		String[] p = request.getParameterValues("prentede");
+		String[] p = request.getParameterValues("pretende");
 		System.out.println(i.getVallocacao());
 		System.out.println(i.getValvenda());
 		i.setPretende(p);
 		if(p != null){
 			System.out.println("naonulo");
-		}System.out.println("nulo");
-		/*for (int x = 0; x < p.length; x++) {
+		}
+		i.setPretendevender(0);
+		i.setPretendealugar(0);
+		for (int x = 0; x < p.length; x++) {
 			String lista;
 			lista =p[x];
 			System.out.println(lista);
 		if(p[x].equals("vender")){
 			i.setPretendevender(1);
-		}else{i.setPretendevender(0);}
+		}
 		if(p[x].equals("alugar")){
 			i.setPretendealugar(1);
-		}else{i.setPretendealugar(0);}}
-		*/
+		}
+		}
+		
 		ImovelDAO idao = new ImovelDAO();
 		idao.cadastrar(i);
 		
