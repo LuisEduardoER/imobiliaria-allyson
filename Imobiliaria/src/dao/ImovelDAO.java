@@ -10,6 +10,7 @@ import jdbc.Conexao;
 import beans.Imovel;
 
 
+
 public class ImovelDAO {
 	private Connection con;
 
@@ -111,6 +112,38 @@ public void excluir(Imovel i) {
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}
+}
+
+public Imovel buscarPorId(int id){
+	
+			String sql = "select * from imovel where id=?";
+			
+			try {
+				PreparedStatement preparadorSQL = con.prepareStatement(sql);
+				preparadorSQL.setInt(1, id);
+				
+				ResultSet res = preparadorSQL.executeQuery();
+				
+				
+				if(res.next()){
+					
+					Imovel i =  new Imovel();
+					i.setIdimovel(res.getInt("id") );
+					i.setCidade(res.getString("cidade") );
+					i.setEstado(res.getString("estado"));
+					i.setTipo(res.getString("tipo"));
+					i.setValvenda(res.getInt("valvenda"));
+					i.setVallocacao(res.getInt("vallocacao"));
+					i.setIdusuario(res.getInt("idiusuario"));
+					return i;
+				}
+				
+				preparadorSQL.close();
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+			return null;
 }
 	
 	

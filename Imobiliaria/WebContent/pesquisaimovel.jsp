@@ -5,9 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 
-<% 
-	ArrayList<Imovel> lista = (ArrayList<Imovel>) session.getAttribute("lista");
-%>
+
 
 <html>
 <head>
@@ -24,25 +22,27 @@
       <ul>
         <li><a href="inicio.jsp">Inicio</a></li>
         <li><a href="cadastroimovel.jsp">Cadastrar Imóvel</a></li>
-        <li><a href="ServletListaImovel">Pesquisar Imóvel</a></li>
+        <li><a href="pesquisaimovel.jsp">Pesquisar Imóvel</a></li>
       </ul>
     </div>
   </div>
    <div class="column1">
   
 </div>
- <div class="column2">
+ <div class="column4">
   <div class="left_box">
         <div class="top_left_box"> </div>
         <div class="center_left_box">
           <div class="box_title">Pesquisar Imovel</div>
           <div class="form">
           
-          <form action="ServletListaUsuario" method="get">
+          <form action="ServletListaImovel" method="get">
   	       
-              <input type="submit" value="pesquisar" />
+              <% 
+	ArrayList<Imovel> lista = (ArrayList<Imovel>) session.getAttribute("lista");
+	%>
             
-  	       </form>
+  	       
 		    <table border="1">
 			<tr>
 				<th> IdImovel </th>
@@ -63,35 +63,19 @@
 				<td> <%= u.getEstado() %> </td>
 				<td> <%= u.getCidade() %> </td>
 				<td> <%= u.getValvenda() %> </td>
-				<td>  <a href="<%= u.getIdimovel() %>"> Excluir </a> /  <a href="#<%= u.getIdimovel() %>">Alterar</a> </td>
+				<td>  <a href="ServletExcluirImovel?id=<%= u.getIdimovel() %>"> Excluir </a> /  <a href="ServletAlterarImovel?id=<%= u.getIdimovel() %>">Alterar</a> </td>
 			</tr>
 		
 			<%
 				}
 			%>
 		
-</table>
+</table><input type="button" value="pesquisar" /></form>
            </div>
         </div>
         <div class="bottom_left_box"> </div>
       </div>
      
-    </div>
-	<div class="column3">
-      
-      <div class="left_box">
-        <div class="top_left_box"> </div>
-        <div class="center_left_box">
-          <div class="box_title">Pesquisar por nome(fazer)</div>
-          <div class="form">
-          
-         
-            <div style="float:right; padding:10px 25px 0 0;">
-              <input type="button" value="Enviar" ></div>
-            </div>
-        </div>
-        <div class="bottom_left_box"> </div>
-      </div>
     </div>
 
 </div>
