@@ -25,27 +25,29 @@ public class ServletAlterarImovel extends HttpServlet {
 
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		Usuario usuario = (Usuario)session.getAttribute("usuAutenticado");
 		
-		int x = usuario.getId();
-		String id = request.getParameter("id");
-		Imovel i = new Imovel();
-		ImovelDAO idao = new ImovelDAO();
 		
-		if(id!=null){
-			
-						
-			 i = idao.buscarPorId(Integer.parseInt(id));
-			if(i.getIdusuario() == x){ 
-			request.setAttribute("i", i);
-			
-			//encaminhar para o frmcadusuario
-			request.getRequestDispatcher("pesquisaimovel.jsp").forward(request, response);
-			
-			}else request.getRequestDispatcher("naoexlui.html").forward(request, response);
 		
-		}request.getRequestDispatcher("naoexlui.html").forward(request, response);
+		//<input id="iid" type="hidden" name="iid" value="<%=imovel.getIdimovel()%>" readonly="readonly">
+		
+		Imovel imovel = new Imovel();
+		
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+			
+				imovel.setIdimovel(id);		
+			 //imovel = idao.buscarPorId(id);
+			 System.out.println(imovel.getIdimovel());
+			 
+			 HttpSession sessao = request.getSession();
+			 sessao.setAttribute("imovel",imovel );
+			
+			
+			
+			request.getRequestDispatcher("alteraimovel.jsp").forward(request, response);
+			
+			
+		
 	}
 
 }
