@@ -1,5 +1,7 @@
 package beans;
 
+import java.util.Arrays;
+
 public class Imovel {
 	private String[] pretende;
 	private String tipo;
@@ -12,10 +14,28 @@ public class Imovel {
 	private int idusuario;
 	private int pretendevender;
 	private int pretendealugar;
+	private Usuario usuario;
 	
 	
 	
-	
+	@Override
+	public String toString() {
+		return "Imovel [pretende=" + Arrays.toString(pretende) + ", tipo="
+				+ tipo + ", estado=" + estado + ", cidade=" + cidade
+				+ ", valvenda=" + valvenda + ", vallocacao=" + vallocacao
+				+ ", idimovel=" + idimovel + ", idusuario=" + idusuario
+				+ ", pretendevender=" + pretendevender + ", pretendealugar="
+				+ pretendealugar + ", usuario=" + usuario + "]";
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 	public String[] getPretende() {
 		return pretende;
 	}

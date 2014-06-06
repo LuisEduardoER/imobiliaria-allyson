@@ -6,7 +6,9 @@ import dao.ImovelDAO;
 public class TestaImovelDAO {
 
 	public static void main(String[] args) {
-		testCadastrar();
+		
+		procurar();
+		
 	}
 	private static void testCadastrar() {
 		Imovel i = new Imovel();
@@ -27,5 +29,22 @@ public class TestaImovelDAO {
 		idao.cadastrar(i);
 		System.out.println("done");
 		
+	}
+	private static void procurar(){
+		ImovelDAO idao= new ImovelDAO();
+		
+		
+		
+		Imovel i = new Imovel();
+		i.setCidade("horizonte");
+		i.setEstado("ce");
+		i.setIdimovel(2);
+		i.setPretendealugar(1);
+		i.setPretendevender(0);
+		i.setTipo("apartamento");
+		i.setVallocacao(250);
+		i.setValvenda(80000);
+		
+		idao.alterar(i);
 	}
 }

@@ -39,6 +39,7 @@ public void cadastrar(Imovel i){
 			    
 				pstmt.execute();
 				pstmt.close();
+				con.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -62,10 +63,11 @@ public ArrayList<Imovel> buscarTodos(){
 					i.setEstado(res.getString("estado"));
 					i.setTipo(res.getString("tipo"));
 					//i.setVallocacao(res.getInt("vallocacao"));
-					//i.setValvenda(res.getInt("valvenda"));
+					i.setValvenda(res.getInt("valvenda"));
 					lista.add(i);
 				}
 				pstm.close();
+				con.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -74,32 +76,34 @@ public ArrayList<Imovel> buscarTodos(){
 
 public void alterar(Imovel i) { 
 
-	String sql = "update imovel set pretende=? , tipo=?,vallocacao=?,valvenda=? where idimovel=?";
+	String sql = "update imovel set pretendelocar=?,pretendevender=?,tipo=?,estado=?,cidade=?,valvenda=?,vallocacao=? where idimovel=?";
 
 	try {
 		PreparedStatement pstm = con.prepareStatement(sql);
-		pstm.setInt(1, i.getIdimovel());
-		//pstm.setString(2, i.getPretende());
-		pstm.setString(3, i.getCidade());
+		pstm.setInt(1, i.getPretendealugar());
+		pstm.setInt(2, i.getPretendevender());
+		pstm.setString(3, i.getTipo());
 		pstm.setString(4, i.getEstado());
-		pstm.setString(5, i.getTipo());
+		pstm.setString(5, i.getCidade());
 		pstm.setInt(6, i.getVallocacao());
 		pstm.setInt(7, i.getValvenda());
+		pstm.setInt(8, i.getIdimovel());
 		
 		
 		pstm.execute();
 		pstm.close();
+		con.close();
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}
 }
 
-public void excluir(Imovel i) { 
+public int excluir(Imovel i) { 
 
-	
+
 
 	String sql = "delete from imovel where idimovel=?";
-
+	int resultado = 0;
 	
 
 	try {
@@ -107,11 +111,12 @@ public void excluir(Imovel i) {
 
 		pstm.setInt(1, i.getIdimovel());
 		
-		pstm.execute();
+		resultado = pstm.executeUpdate();
 		pstm.close();
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}
+	return resultado;
 }
 
 public Imovel buscarPorId(int id){
@@ -119,26 +124,29 @@ public Imovel buscarPorId(int id){
 			String sql = "select * from imovel where id=?";
 			
 			try {
-				PreparedStatement preparadorSQL = con.prepareStatement(sql);
-				preparadorSQL.setInt(1, id);
+				PreparedStatement pstm = con.prepareStatement(sql);
+				pstm.setInt(1, id);
 				
-				ResultSet res = preparadorSQL.executeQuery();
+				ResultSet res = pstm.executeQuery();
 				
 				
 				if(res.next()){
 					
 					Imovel i =  new Imovel();
-					i.setIdimovel(res.getInt("id") );
-					i.setCidade(res.getString("cidade") );
+					i.setIdimovel(res.getInt("idimovel"));
+					//i.setIdusuario(res.getInt("idiusuario"));
+					i.setCidade(res.getString("cidade"));
 					i.setEstado(res.getString("estado"));
 					i.setTipo(res.getString("tipo"));
+					//i.setVallocacao(res.getInt("vallocacao"));
 					i.setValvenda(res.getInt("valvenda"));
-					i.setVallocacao(res.getInt("vallocacao"));
 					i.setIdusuario(res.getInt("idiusuario"));
+					System.out.println("retornoi");
 					return i;
 				}
 				
-				preparadorSQL.close();
+				pstm.close();
+				con.close();
 			} catch (SQLException e) {
 				
 				e.printStackTrace();
